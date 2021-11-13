@@ -9,7 +9,7 @@ interface gameState {
 }
 
 export function getStateFromStorage() {
-    return localStorage.getItem("state") ? localStorage.getItem("new") : null;
+    return localStorage.getItem("state") ? localStorage.getItem("state") : null;
 }
 
 export function setStateToStorage(state: gameState) {

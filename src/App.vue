@@ -1,29 +1,34 @@
 <template>
-  <Start v-if="!gameConfig" v-on:start="setConfig"/>
-  <GameBoard v-if="gameConfig" v-on:end="setConfig"/>
+  <Start v-if="!gameConfig" v-on:start="setConfig" />
+  <GameBoard v-if="gameConfig" v-on:end="setConfig" />
 </template>
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 import Start from "@/components/Start";
 import GameBoard from "@/components/GameBoard";
+import { getStateFromStorage } from "@/modules/Storage";
 
 export default defineComponent({
   name: "App",
-  components: {Start, GameBoard},
+  components: { Start, GameBoard },
   data: function () {
     return {
-      gameConfig: undefined
-    }
+      gameConfig: null,
+    };
   },
   methods: {
     setConfig: function (config) {
-      console.log(config);
       this.gameConfig = config;
-    }
+    },
   },
   mounted() {
-    document.title = 'Dragons of Mugloar'
-  }
+    document.title = "Dragons of Mugloar";
+    const gameState = getStateFromStorage();
+    console.log(gameState);
+    if (gameState) {
+      this.setConfig(gameState);
+    }
+  },
 });
 </script>
 <style>
@@ -34,5 +39,6 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  padding: 0;
 }
 </style>
