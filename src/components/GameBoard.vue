@@ -4,7 +4,7 @@
       :lives="lives"
       :message="message"
       :score="score"
-      :success="score"
+      :success="success"
     />
     <Messages v-if="!storeOpen" :game-id="gameId" v-on:update="updateState" />
     <Store

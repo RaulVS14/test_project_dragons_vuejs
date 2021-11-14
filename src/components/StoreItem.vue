@@ -1,6 +1,6 @@
 <template>
   <div class="store__item">
-    <p>{{ item.name }}</p>
+    <h3>{{ item.name }}</h3>
     <div class="store__item__price gold__display">
       {{ item.cost }} <span class="gold">Gold</span>
     </div>
@@ -38,17 +38,19 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .store__item {
-  width: calc((100% - (4 * 15px)) / 5);
+  width: calc((100% - (3 * 20px)) / 4);
   min-width: 320px;
   padding: 50px 50px;
   text-align: center;
-  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 3px 5px black, 0 0 60px orange inset;
-  background: white;
+  margin: 0;
+/*  box-shadow: 2px 3px 5px black, 0 0 25px orange inset;*/
+
+  box-shadow: 2px 3px 10px black, 0 0 60px #8a4d0f inset;
+  background: lightgoldenrodyellow;
   gap: 15px;
 }
 </style>

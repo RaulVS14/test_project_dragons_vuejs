@@ -30,13 +30,13 @@ button {
     183,
     117,
     72,
-    0.6
+    0.0
   ); /* Optional: just make scrollbar invisible */
 }
 
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  background: rgba(183, 117, 72, 1);
+  background: rgba(183, 117, 72, 0.2);
 }
 
 .gold {

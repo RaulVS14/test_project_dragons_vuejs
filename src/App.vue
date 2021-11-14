@@ -38,6 +38,7 @@ export default defineComponent({
       success: null,
       inventory: [],
       ended: false,
+      timeoutState:null
     };
   },
   methods: {
@@ -57,9 +58,11 @@ export default defineComponent({
     purchase: function (buyEvent, item) {
       if (buyEvent?.shoppingSuccess) {
         buyEvent.message = `Bought an item "${item.name}"`;
+        buyEvent.success = true;
         this.updateGameState(buyEvent);
         this.inventory.push(item);
       } else {
+        this.success = false;
         this.message = "Failed to purchase the item";
       }
     },
@@ -78,11 +81,14 @@ export default defineComponent({
         this.message = message;
         this.success = success;
         if (lives !== 0) {
-          setTimeout(
-              function () {
-                this.message = null;
-              }.bind(this),
-              1000
+          if (this.timeoutState) {
+            clearTimeout(this.timeoutState);
+          }
+          this.timeoutState = setTimeout(
+            function () {
+              this.message = null;
+            }.bind(this),
+            1000
           );
         }
       }

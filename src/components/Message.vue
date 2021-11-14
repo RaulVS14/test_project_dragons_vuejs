@@ -1,33 +1,33 @@
 <template>
   <div class="message">
-    <h4 class="message__text">
+    <h3 class="message__text">
       {{
         !message?.encrypted
           ? message?.message
           : decrypt(message.message, message.encrypted)
       }}
-    </h4>
+    </h3>
     <div class="message__info">
-      <span class="message__threat">{{
-        !message?.encrypted
-          ? message?.probability
-          : decrypt(message?.probability, message.encrypted)
-      }}</span>
       <div class="message__stats">
         <span class="message__expire"
-          >Expires in: {{ message?.expiresIn }}</span
+        >Expires in: {{ message?.expiresIn }}</span
         >
         <span class="message__reward gold__display">
           {{ message?.reward }} <span class="gold">Gold</span>
         </span>
       </div>
+      <span class="message__threat">{{
+        !message?.encrypted
+          ? message?.probability
+          : decrypt(message?.probability, message.encrypted)
+      }}</span>
     </div>
     <div class="message__controls">
       <button
         class="btn__accept btn--100"
         v-on:click="solveMessage(message.adId)"
       >
-        I will accept
+        ACCEPT
       </button>
     </div>
   </div>
@@ -76,7 +76,7 @@ export default defineComponent({
   box-shadow: 2px 3px 10px black, 0 0 60px #8a4d0f inset;
   background: lightgoldenrodyellow;
   padding: 50px 50px;
-  width: calc((100% - (4 * 15px)) / 5);
+  width: calc((100% - (3 * 15px)) / 4);
   min-width: 320px;
   flex-direction: column;
   display: flex;
@@ -101,6 +101,10 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+  .btn__accept {
+    font-weight: bold;
+    letter-spacing: 2px;
   }
 }
 </style>

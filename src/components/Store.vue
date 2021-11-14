@@ -40,9 +40,11 @@ export default defineComponent({
 #store {
   height: 85%;
   overflow-y: auto;
-  width: 100%;
+  width: 80%;
+  margin:0 auto;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   gap: 15px;
   padding: 20px;
 }

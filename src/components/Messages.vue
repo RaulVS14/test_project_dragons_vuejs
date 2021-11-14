@@ -48,13 +48,13 @@ export default defineComponent({
 .messages {
   height: 85%;
   overflow-y: auto;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   gap: 15px;
   border-radius: 10px;
   padding: 20px;
-  margin: 0 auto;
+  margin:0 auto;
 }
 </style>

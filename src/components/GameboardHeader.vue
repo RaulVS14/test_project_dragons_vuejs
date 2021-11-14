@@ -1,11 +1,11 @@
 <template>
-  <div class="header_panel" v-bind:class="[success ? 'success' : 'failed']">
+  <div class="header_panel">
     <div class="header_panel__lives">
       <span v-for="index in lives" :key="index">&hearts;</span>
     </div>
     <div
       class="header_panel__notification"
-      v-bind:class="[success ? 'success' : 'fail']"
+      v-bind:class="[ success ? 'success' : 'fail']"
     >
       {{ message }}
     </div>
@@ -36,11 +36,18 @@ export default defineComponent({
     flex-grow: 1;
   }
   &__lives {
-    color: red;
-    font-size: 25px;
+    color: indianred;
+    font-size: 2.5em;
+    span{
+      margin: 0 2px;
+    }
+  }
+  &__score{
+    font-size: 1.75em;
   }
 
   &__notification {
+    font-size: 1.5em;
     width: 30%;
     &.success {
       color: green;
