@@ -1,12 +1,17 @@
 <template>
-  <Start v-if="!gameConfig" v-on:start="startGame" />
+  <Start v-if="!gameConfig && !ended" v-on:start="startGame" />
   <GameBoard
     v-if="gameConfig"
     :game-id="gameConfig.gameId"
     :message="message"
     :success="success"
+    :gold="gameConfig.gold"
+    :lives="gameConfig.lives"
+    :score="gameConfig.score"
+    v-on:purchase="purchase"
     v-on:update="updateGameState"
   />
+  <End v-if="!gameConfig?.lives && ended" :message="message" v-on:start="startGame"/>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -17,15 +22,18 @@ import {
   setStateToStorage,
   unsetStateInStorage,
 } from "@/modules/Storage";
+import End from "@/components/End";
 
 export default defineComponent({
   name: "App",
-  components: { Start, GameBoard },
+  components: { Start, GameBoard, End },
   data: function () {
     return {
       gameConfig: null,
       message: null,
       success: null,
+      inventory:null,
+      ended: false,
     };
   },
   methods: {
@@ -39,10 +47,17 @@ export default defineComponent({
       this.gameConfig = null;
       this.message = null;
       this.success = null;
+      this.ended = false;
       this.setConfig(configuration);
     },
+    purchase: function (buyEvent) {
+      if (buyEvent?.shoppingSuccess) {
+        this.updateGameState(buyEvent);
+      } else{
+        this.message = "Failed to purchase the item";
+      }
+    },
     updateGameState: function (result) {
-      console.log(result, this.gameConfig);
       const { gold, highScore, lives, message, score, success, turn } = result;
       if (gold) {
         this.gameConfig.gold = gold;
@@ -63,11 +78,14 @@ export default defineComponent({
       if (turn) {
         this.gameConfig.turn = turn;
       }
-      if (!lives) {
+      if (lives === 0) {
         this.gameConfig = null;
+        this.ended = true;
         unsetStateInStorage();
+      }else{
+        setStateToStorage(this.gameConfig);
       }
-      setStateToStorage(this.gameConfig);
+
     },
   },
   mounted() {

@@ -20,16 +20,16 @@ Due date: Monday 15. November 2021
         * Handle response [X]
         * Update game state [X]
 4. Allows user to purchase items from the shop
-    * User can open shop on click
-    * Make query for API to get Items for purchase
-    * User can click to buy
-    * Make query to buy
+    * User can open shop on click [X]
+    * Make query for API to get Items for purchase [X]
+    * User can click to buy [X]
+    * Make query to buy [X]
         * If success update user data
         * If not success show declined message - Decided to use store update and not letting users click on items not
           available for buying
 5. Displays player's score, gold and lives
-    * Element for score
-    * Element for gold
-    * Element for lives
+    * Element for score [x]
+    * Element for gold 
+    * Element for lives [x]
 
 Bonus: Tool to help player make decisions on ads

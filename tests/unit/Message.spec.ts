@@ -22,7 +22,6 @@ describe("Message.vue", () => {
       message: sampleMessage,
       gameId: "x",
     });
-    console.log(wrapper.text());
     expect(wrapper.text()).toEqual(
       `${sampleMessage.message}Expires in: ${sampleMessage.expiresIn}${sampleMessage.reward} Gold${sampleMessage.probability} I will accept`
     );

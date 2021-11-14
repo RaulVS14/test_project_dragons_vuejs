@@ -58,5 +58,5 @@ export function postPurchaseItem(
   gameId: string,
   itemId: string
 ): Promise<Response | void> {
-  return postRequest(`${getGameApiUrl(gameId)}/shope/buy/${itemId}`);
+  return postRequest(`${getGameApiUrl(gameId)}/shop/buy/${itemId}`);
 }

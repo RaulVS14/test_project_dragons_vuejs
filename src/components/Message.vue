@@ -9,7 +9,7 @@
     </p>
     <div class="message__info">
       <span class="message__expire">Expires in: {{ message?.expiresIn }}</span>
-      <span class="message__reward">
+      <span class="message__reward gold__display">
         {{ message?.reward }} <span class="gold">Gold</span>
       </span>
       <span class="message__threat">{{
@@ -45,11 +45,33 @@ export default defineComponent({
         this.$emit("solve", result);
       }
     },
+    caesarCypher: function (message, shift) {
+      let result = "";
+      for (let i = 0; i < message.length; i++) {
+        let char = message[i];if (char === " ") {
+          result += char;
+        } else if (char.toUpperCase() === char) {
+          let ch = String.fromCharCode(
+              ((char.charCodeAt(0) + shift - 65) % 26) + 65
+          );
+          result += ch;
+        } else {
+          let ch = String.fromCharCode(
+            ((char.charCodeAt(0) + shift - 97) % 26) + 97
+          );
+          result += ch;
+        }
+      }
+      return result;
+    },
     decrypt: function (text, encryption) {
       let result = "";
       switch (encryption) {
         case 1:
           result = window.atob(text);
+          break;
+        case 2:
+          result = this.caesarCypher(text, 13);
           break;
         default:
           console.log(`Unknown Encryption: ${text}`);
@@ -75,13 +97,6 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  &__reward {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
   }
 }
 </style>
