@@ -12,6 +12,7 @@ describe("App.vue", () => {
     turn: 13,
     shoppingSuccess: false,
   };
+
   const testConfig = {
     gold: 12,
     lives: 14,
@@ -19,6 +20,7 @@ describe("App.vue", () => {
     score: 12,
     turn: 12,
   };
+
   it("renders start button", () => {
     const buttonText = "Start game";
     const wrapper = mount(App);
@@ -27,17 +29,15 @@ describe("App.vue", () => {
   });
 
   it("retrieves data from storage on mount", () => {
-    const data = { foo: "bar" };
-    setStateToStorage(data);
+    setStateToStorage(testConfig);
     const wrapper = mount(App);
     const instanceData = wrapper.vm.$data;
-    expect(instanceData.gameConfig).toEqual(data);
+    expect(instanceData.gameConfig).toEqual(testConfig);
   });
 
   it("updates config correctly", () => {
     const instance = mountWithConfigAndGetInstance(testConfig);
     const instanceData = instance.$data;
-    console.log(testConfig, instanceData);
     expect(instanceData.gameConfig).toEqual(testConfig);
   });
 
@@ -63,21 +63,24 @@ describe("App.vue", () => {
     expect(wrapperData.message).toEqual(config.message);
     expect(wrapperData.success).toEqual(config.success);
   });
+
   it("purchase updates state correctly", () => {
     const successfulPurchase = { ...testPurchase };
     successfulPurchase.shoppingSuccess = true;
     const instance = mountWithConfigAndGetInstance();
     const instanceData = instance.$data;
-    instance.purchase(successfulPurchase);
+    instance.purchase(successfulPurchase, {name:"cookie"});
     expect(instanceData.gameConfig).toEqual({ gold: 12, lives: 1, turn: 13 });
   });
+
   it("purchase failure doesn't update state and updates message", () => {
     const instance = mountWithConfigAndGetInstance();
     const instanceData = instance.$data;
-    instance.purchase(testPurchase);
+    instance.purchase(testPurchase, {name:"cookie"});
     expect(instanceData.gameConfig).toEqual({});
     expect(instanceData.message).toEqual("Failed to purchase the item");
   });
+
   it("start game setups everything correctly", () => {
     const instance = mountWithConfigAndGetInstance();
     instance.startGame(testConfig);
@@ -87,17 +90,19 @@ describe("App.vue", () => {
     expect(instanceData.ended).toEqual(false);
     expect(instanceData.gameConfig).toEqual(testConfig);
   });
-  it("setConfig sets config correctly", ()=>{
+
+  it("setConfig sets config correctly", () => {
     const instance = mountWithConfigAndGetInstance();
     instance.setConfig(testConfig);
     const instanceData = instance.$data;
     const storageState = getStateFromStorage();
     expect(instanceData.gameConfig).toEqual(testConfig);
     expect(storageState).toEqual(testConfig);
-  })
-  it("setConfig doesnt update state if config incorrect", ()=>{
-    const config ={
-      gold:100,
+  });
+
+  it("setConfig doesnt update state if config incorrect", () => {
+    const config = {
+      gold: 100,
     }
     const instance = mountWithConfigAndGetInstance(config);
     instance.setConfig(null);
@@ -105,7 +110,8 @@ describe("App.vue", () => {
     const storageState = getStateFromStorage();
     expect(instanceData.gameConfig).toEqual(config);
     expect(storageState).toEqual(config);
-  })
+  });
+
   function mountWithConfigAndGetInstance(config: {} = {}) {
     setStateToStorage({});
     const wrapper = mount(App);

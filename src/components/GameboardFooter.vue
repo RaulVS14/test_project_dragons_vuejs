@@ -5,21 +5,24 @@
     </div>
     <div class="footer_panel__merchant">
       <button v-if="!storeOpen" v-on:click="openMerchant">Merchant</button>
-      <button v-if="storeOpen" v-on:click="openMerchant">Messages</button>
+      <button v-if="storeOpen" class="link" v-on:click="openMerchant">
+        &lsaquo; Back to messages
+      </button>
     </div>
   </div>
 </template>
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "GameboardFooter",
   props: ["gold", "storeOpen"],
-  methods:{
+  emits: ["merchant"],
+  methods: {
     openMerchant: function () {
-      this.$emit('merchant');
-    }
-  }
+      this.$emit("merchant");
+    },
+  },
 });
 </script>
 <style lang="scss">
@@ -28,6 +31,12 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:20px;
+  gap: 20px;
+  & .link {
+    background: none;
+    border: none;
+    color: initial;
+    font-size: 18px;
+  }
 }
 </style>

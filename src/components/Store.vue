@@ -19,6 +19,7 @@ export default defineComponent({
   name: "Store",
   props: ["gameId", "gold"],
   components: { StoreItem },
+  emits:["purchase"],
   data: function () {
     return {
       items: null,
@@ -28,8 +29,8 @@ export default defineComponent({
     this.items = await getShopListing(this.gameId);
   },
   methods: {
-    purchase: async function (buyEvent) {
-      this.$emit("purchase", buyEvent);
+    purchase: async function (buyEvent, item) {
+      this.$emit("purchase", buyEvent, item);
       this.items = await getShopListing(this.gameId);
     },
   },
@@ -42,7 +43,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-flow: row wrap;
-  gap: 10px;
+  gap: 15px;
   padding: 20px;
 }
 </style>

@@ -26,7 +26,6 @@ export default defineComponent({
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 50px;
   align-items: center;
 
   &__lives,
@@ -42,6 +41,7 @@ export default defineComponent({
   }
 
   &__notification {
+    width: 30%;
     &.success {
       color: green;
     }

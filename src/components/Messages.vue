@@ -49,8 +49,10 @@ export default defineComponent({
   height: 85%;
   overflow-y: auto;
   width: 100%;
-  min-width: 320px;
-  max-width: 50%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 15px;
   border-radius: 10px;
   padding: 20px;
   margin: 0 auto;

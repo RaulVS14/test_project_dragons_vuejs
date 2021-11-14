@@ -31,7 +31,7 @@ export default defineComponent({
   name: "GameBoard",
   components: { Messages, GameboardHeader, GameboardFooter, Store },
   props: ["gameId", "message", "success", "lives", "score", "gold"],
-  emits: ["update"],
+  emits: ["update", "purchase"],
   data: function () {
     return {
       storeOpen: false,
@@ -44,8 +44,8 @@ export default defineComponent({
     openMerchant: function () {
       this.storeOpen = !this.storeOpen;
     },
-    purchase: function (buyEvent) {
-      this.$emit("purchase", buyEvent);
+    purchase: function (buyEvent, item) {
+      this.$emit("purchase", buyEvent, item);
     },
   },
 });

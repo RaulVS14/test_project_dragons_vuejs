@@ -36,7 +36,7 @@ export default defineComponent({
       gameConfig: null,
       message: null,
       success: null,
-      inventory: null,
+      inventory: [],
       ended: false,
     };
   },
@@ -54,9 +54,11 @@ export default defineComponent({
       this.ended = false;
       this.setConfig(configuration);
     },
-    purchase: function (buyEvent) {
+    purchase: function (buyEvent, item) {
       if (buyEvent?.shoppingSuccess) {
+        buyEvent.message = `Bought an item "${item.name}"`;
         this.updateGameState(buyEvent);
+        this.inventory.push(item);
       } else {
         this.message = "Failed to purchase the item";
       }
@@ -75,6 +77,14 @@ export default defineComponent({
       if (message) {
         this.message = message;
         this.success = success;
+        if (lives !== 0) {
+          setTimeout(
+              function () {
+                this.message = null;
+              }.bind(this),
+              1000
+          );
+        }
       }
       if (score) {
         this.gameConfig.score = score;

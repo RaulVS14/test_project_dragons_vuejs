@@ -23,7 +23,7 @@ describe("Message.vue", () => {
       gameId: "x",
     });
     expect(wrapper.text()).toEqual(
-      `${sampleMessage.message}Expires in: ${sampleMessage.expiresIn}${sampleMessage.reward} Gold${sampleMessage.probability} I will accept`
+      `${sampleMessage.message}${sampleMessage.probability}Expires in: ${sampleMessage.expiresIn}${sampleMessage.reward} Gold I will accept`
     );
   });
 });
