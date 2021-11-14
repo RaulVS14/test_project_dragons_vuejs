@@ -3,9 +3,8 @@ import GameBoard from '@/components/GameBoard.vue'
 
 describe('GameBoard.vue', () => {
     it('Gameboard renders', () => {
-        const elementText = 'GAME IS ON';
         const wrapper = mount(GameBoard);
-        const containerElement = wrapper.find('div');
-        expect(containerElement.text()).toMatch(elementText);
+        const containerElement = wrapper.find('#game_board');
+        expect(containerElement.findAll('.messages').length).toBe(1)
     })
 })

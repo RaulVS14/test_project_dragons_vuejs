@@ -1,6 +1,6 @@
 <template>
   <Start v-if="!gameConfig" v-on:start="setConfig" />
-  <GameBoard v-if="gameConfig" v-on:end="setConfig" />
+  <GameBoard v-if="gameConfig" :game-id="gameConfig.gameId" v-on:end="setConfig"/>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -24,7 +24,6 @@ export default defineComponent({
   mounted() {
     document.title = "Dragons of Mugloar";
     const gameState = getStateFromStorage();
-    console.log(gameState);
     if (gameState) {
       this.setConfig(gameState);
     }
