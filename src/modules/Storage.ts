@@ -5,16 +5,24 @@ export function getStateFromStorage(): string | null {
   }
   return null;
 }
-
-export function setStateToStorage(state: {}): string | null {
+interface StateType {
+  gameId?: string;
+  lives?: number;
+  gold?: number;
+  level?: number;
+  score?: number;
+  highScore?: number;
+  turn?: number;
+}
+export function setStateToStorage(state: StateType): string | null {
   localStorage.setItem("state", JSON.stringify(state));
   return getStateFromStorage();
 }
 
-export function unsetStateInStorage() {
+export function unsetStateInStorage(): boolean {
   if (localStorage.getItem("state")) {
     localStorage.removeItem("state");
     return !localStorage.getItem("state");
   }
-  return;
+  return true;
 }
