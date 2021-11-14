@@ -2,7 +2,7 @@ Due date: Monday 15. November 2021
 
 1. Allows the user to start a game
     * Build UI - start button, background in container
-    * AJAX query on click to make query to API
+    * Query on click to make query to API [x]
     * Get response [X]
     * Replace container [X]
     * GameState [X]
@@ -24,12 +24,11 @@ Due date: Monday 15. November 2021
     * Make query for API to get Items for purchase [X]
     * User can click to buy [X]
     * Make query to buy [X]
-        * If success update user data
-        * If not success show declined message - Decided to use store update and not letting users click on items not
-          available for buying
-5. Displays player's score, gold and lives
+        * If success update user data [x]
+        * If not success show declined message[x] and not letting users click on items not available for buying [x]
+5. Displays player's score, gold and lives [x]
     * Element for score [x]
-    * Element for gold 
+    * Element for gold [x]
     * Element for lives [x]
 
 Bonus: Tool to help player make decisions on ads

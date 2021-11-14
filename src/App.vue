@@ -11,7 +11,11 @@
     v-on:purchase="purchase"
     v-on:update="updateGameState"
   />
-  <End v-if="!gameConfig?.lives && ended" :message="message" v-on:start="startGame"/>
+  <End
+    v-if="!gameConfig?.lives && ended"
+    :message="message"
+    v-on:start="startGame"
+  />
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -32,7 +36,7 @@ export default defineComponent({
       gameConfig: null,
       message: null,
       success: null,
-      inventory:null,
+      inventory: null,
       ended: false,
     };
   },
@@ -40,8 +44,8 @@ export default defineComponent({
     setConfig: function (config) {
       if (config) {
         setStateToStorage(config);
+        this.gameConfig = config;
       }
-      this.gameConfig = config;
     },
     startGame: function (configuration) {
       this.gameConfig = null;
@@ -53,7 +57,7 @@ export default defineComponent({
     purchase: function (buyEvent) {
       if (buyEvent?.shoppingSuccess) {
         this.updateGameState(buyEvent);
-      } else{
+      } else {
         this.message = "Failed to purchase the item";
       }
     },
@@ -82,10 +86,9 @@ export default defineComponent({
         this.gameConfig = null;
         this.ended = true;
         unsetStateInStorage();
-      }else{
+      } else {
         setStateToStorage(this.gameConfig);
       }
-
     },
   },
   mounted() {
