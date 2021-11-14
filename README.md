@@ -1,7 +1,7 @@
+## PLANNING
 Due date: Monday 15. November 2021
-
 1. Allows the user to start a game
-    * Build UI - start button, background in container
+    * Build UI - start button, background in container [x]
     * Query on click to make query to API [x]
     * Get response [X]
     * Replace container [X]
@@ -32,3 +32,19 @@ Due date: Monday 15. November 2021
     * Element for lives [x]
 
 Bonus: Tool to help player make decisions on ads
+## RESOURCES
+PAPER Texture: https://stackoverflow.com/questions/14585101/old-paper-background-texture-with-just-css
+
+GOLD COIN: https://commons.wikimedia.org/wiki/File:Gold_coin_icon.png
+
+## TIME
+1. Test assignment - Initial setup - 02:13:29
+2. Test assignment - Create start view - 00:57:00
+3. Test assignment - Create API module - 00:46:05
+4. Test assignment - Create Messages View - 00:38:43
+5. Test assignment - Create Messages View - 02:03:49
+6. Test assignment - Create Store view - 00:53:23
+7. Test assignment - Create Store view - 01:09:17
+8. Test assignment - Improvements - 04:11:29
+
+TOTAL: 12:53:15
