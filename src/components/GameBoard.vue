@@ -1,6 +1,5 @@
 <template>
-  <div class="">
-    GAME IS ON
+  <div id="gameboard">
     <button v-on:click="endGame">End Game</button>
   </div>
 </template>

@@ -6,6 +6,6 @@ describe("GameBoard.vue", () => {
   it("Gameboard renders", async () => {
     const wrapper = mount(GameBoard);
     await wrapper.setProps({ gameId: "foo" });
-    expect(wrapper.find(".messages").exists()).toBe(true);
+    expect(wrapper.find("#gameboard").exists()).toBe(true);
   });
 });
