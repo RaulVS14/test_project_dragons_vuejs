@@ -1,17 +1,20 @@
-interface gameState {
-    gameId: string,
-    lives: number,
-    gold: number,
-    level: number,
-    score: number,
-    highScore: number,
-    turn: number
+export function getStateFromStorage(): string | null {
+    const storageState = localStorage.getItem("state");
+    if (storageState) {
+        return JSON.parse(storageState);
+    }
+    return null;
 }
 
-export function getStateFromStorage() {
-    return localStorage.getItem("state") ? localStorage.getItem("state") : null;
+export function setStateToStorage(state: Response): string | null {
+    localStorage.setItem("state", JSON.stringify(state))
+    return getStateFromStorage();
 }
 
-export function setStateToStorage(state: gameState) {
-    return localStorage.setItem("state", JSON.stringify(state));
+export function unsetStateInStorage() {
+    if (localStorage.getItem('state')) {
+        localStorage.removeItem('state')
+        return !localStorage.getItem('state');
+    }
+    return;
 }

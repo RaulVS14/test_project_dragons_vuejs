@@ -3,22 +3,22 @@ Due date: Monday 15. November 2021
 1. Allows the user to start a game
     * Build UI - start button, background in container
     * AJAX query on click to make query to API
-    * Get response
-    * Replace container
-    * GameState
-        * Set
-        * Get
+    * Get response [X]
+    * Replace container [X]
+    * GameState [X]
+        * Set [X]
+        * Get [X]
 
-2. Fetches and displays the list of ads
-    * Make request to get ads
-    * Display them using js
-    * Update after quest
+2. Fetches and displays the list of ads [X]
+    * Make request to get ads [X]
+    * Display them [X]
+    * Update after solving ads [X]
 
-3. Allows user to pick which ones to solve
-    * User can click on ad to solve
-        * API query for solving
-        * Get response
-        * Update game state
+3. Allows user to pick which ones to solve [X]
+    * User can click on ad to solve [x]
+        * API query for solving [X]
+        * Handle response [X]
+        * Update game state [X]
 4. Allows user to purchase items from the shop
     * User can open shop on click
     * Make query for API to get Items for purchase

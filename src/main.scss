@@ -1,11 +1,16 @@
-body{
-  margin: 0;
+html,
+body, #app, #gameboard, #start {
+  height: 100%;
+  width: 100%;
   padding: 0;
+  margin: 0;
 }
 
-*{
-
+* {
   box-sizing: border-box;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -13,4 +18,26 @@ button {
   color: white;
   padding: 15px 20px;
   border: none;
+}
+
+.gold {
+  font-size: 0;
+
+  &::after {
+    content: "";
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    background: url("assets/img/601px-Gold_coin_icon.png") center center / cover no-repeat;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px; /* Remove scrollbar space */
+  background: rgba(183, 117, 72, 0.6); /* Optional: just make scrollbar invisible */
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: rgba(183, 117, 72, 1);
 }
